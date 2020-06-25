@@ -1,0 +1,29 @@
+@import "../../styles/base/variables.scss";
+@import "../../styles/base/responsiveMixin.scss";
+
+.UserListItem {
+  // background-color: rosybrown;
+  width: 100%;
+  height: 50px;
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  // padding-left: 30px;
+  // padding-right: 50px;
+
+  text-align: center;
+
+  &:hover {
+    background-color: rgba(black, 0.2);
+  }
+  @include atSmall {
+  }
+
+  &-icon {
+    width: 20%;
+  }
+  &-name {
+    width: 80%;
+  }
+}

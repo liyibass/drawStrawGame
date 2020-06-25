@@ -1,0 +1,15 @@
+@import "../../styles/base/variables.scss";
+@import "../../styles/base/responsiveMixin.scss";
+
+.UserList {
+  margin: auto;
+  width: 350px;
+  height: 300px;
+  // background-color: gold;
+  overflow: scroll;
+
+  border: 1px solid black;
+
+  @include atSmall {
+  }
+}
