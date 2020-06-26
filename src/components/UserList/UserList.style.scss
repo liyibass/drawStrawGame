@@ -2,14 +2,24 @@
 @import "../../styles/base/responsiveMixin.scss";
 
 .UserList {
-  margin: auto;
-  width: 350px;
-  height: 300px;
   // background-color: gold;
-  overflow: scroll;
 
-  border: 1px solid black;
+  width: 350px;
 
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+
+  margin: 0 30px;
+
+  &-List {
+    width: 100%;
+    height: 300px;
+    overflow: scroll;
+
+    border: 1px solid black;
+  }
   @include atSmall {
   }
 }

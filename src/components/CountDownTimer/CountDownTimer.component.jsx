@@ -33,6 +33,9 @@ function CountDownTimer() {
         console.log("SUCCESS");
 
         dispatch(setWinner());
+
+        const WinnerSecion = document.querySelector(".Winner");
+        WinnerSecion.classList.add("Winner-show");
       }
     }, 1000);
 

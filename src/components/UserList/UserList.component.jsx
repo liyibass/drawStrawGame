@@ -26,9 +26,12 @@ function UserList() {
       className="UserList
 "
     >
-      {userList.map((user) => {
-        return <UserListItem name={user.name} key={user.id} />;
-      })}
+      <h1>參與抽獎名單</h1>
+      <div className="UserList-List">
+        {userList.map((user) => {
+          return <UserListItem name={user.name} key={user.id} />;
+        })}
+      </div>
     </div>
   );
 }

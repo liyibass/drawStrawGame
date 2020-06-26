@@ -10,6 +10,7 @@ function Winner() {
   return (
     <div className="Winner">
       <div className="Winner-detail">
+        <h3>得獎者</h3>
         <h1>{winner.name}</h1>
       </div>
     </div>

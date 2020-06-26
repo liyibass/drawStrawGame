@@ -1,19 +1,21 @@
 import React, { useEffect } from "react";
-import { EventHandler } from "./scripts/EventHandler";
-import Homepage from "./pages/homepage/homepage.component";
 import "./styles/base/overall.scss";
-import Timer from "./components/Timer/Timer.component";
-import UserList from "./components/UserList/UserList.component";
+
 import Winner from "./components/Winner/Winner.component";
+import MainPage from "./pages/MainPage/MainPage.component";
+
+import { EventHandler } from "./scripts/EventHandler";
 
 function App() {
+  useEffect(() => {
+    let ev = new EventHandler();
+  }, []);
   console.log("App rendered");
 
   return (
     <div className="App">
-      {/* <Homepage /> */}
-      <Timer />
-      <UserList />
+      <MainPage />
+
       <Winner />
     </div>
   );

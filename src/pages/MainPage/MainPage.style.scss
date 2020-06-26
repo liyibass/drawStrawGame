@@ -1,0 +1,19 @@
+.MainPage {
+  width: 80%;
+  height: 100vh;
+  margin: auto;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+
+  &-container {
+    // background: orange;
+
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+
+    justify-content: space-evenly;
+  }
+}

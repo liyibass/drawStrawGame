@@ -1,7 +1,20 @@
 @import "../../styles/base/variables.scss";
 @import "../../styles/base/responsiveMixin.scss";
 
-.component {
+.Timer {
+  // background-color: red;
+  width: 350px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+
+  margin: 0 30px;
+
+  .CountDownTimer {
+    font-size: 50px;
+  }
   @include atSmall {
   }
 }
