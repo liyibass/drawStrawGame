@@ -14,16 +14,28 @@
 
   text-align: center;
 
-  &:hover {
-    background-color: rgba(black, 0.2);
-  }
-  @include atSmall {
-  }
-
-  &-icon {
+  .UserListItem-icon {
     width: 20%;
   }
-  &-name {
-    width: 80%;
+  .UserListItem-name {
+    width: 60%;
+  }
+
+  .UserListItem-delete {
+    width: 20%;
+    opacity: 0.1;
+    &:hover {
+      transform: scale(1.2);
+    }
+  }
+
+  &:hover {
+    background-color: rgba(black, 0.2);
+
+    .UserListItem-delete {
+      opacity: 1;
+    }
+  }
+  @include atSmall {
   }
 }

@@ -31,3 +31,17 @@ export const clearWinner = () => {
     type: userTypes.CLEAR_WINNER,
   };
 };
+
+export const addUser = (newUser) => {
+  return {
+    type: userTypes.ADD_USER,
+    payload: newUser,
+  };
+};
+
+export const deleteUser = (selectedUser) => {
+  return {
+    type: userTypes.DELETE_USER,
+    payload: selectedUser,
+  };
+};
