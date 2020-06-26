@@ -1,15 +1,20 @@
 import React from "react";
 import "./Timer.style.scss";
 import { useState } from "react";
-import { useEffect } from "react";
+
 import CountDownTimer from "../CountDownTimer/CountDownTimer.component";
+import { useDispatch } from "react-redux";
+
+import { setCountDownSecond } from "../../redux/timer/timer.action";
+import { clearWinner } from "../../redux/user/user.action";
 
 function Timer() {
-  const [minute, setMinute] = useState(0);
-  const [countDownTime, setCountDownTime] = useState(0);
+  const [second, setSecond] = useState(0);
+  const dispatch = useDispatch();
 
   function submitHandler() {
-    setCountDownTime(minute);
+    dispatch(setCountDownSecond(second));
+    dispatch(clearWinner());
   }
 
   return (
@@ -19,15 +24,15 @@ function Timer() {
       <div className="timer-input">
         <input
           type="text"
-          value={minute}
-          name="minute"
-          onChange={(e) => setMinute(e.target.value)}
+          value={second}
+          name="second"
+          onChange={(e) => setSecond(e.target.value)}
         />
-        <label htmlFor="">分鐘</label>
+        <label htmlFor="">秒</label>
         <button onClick={() => submitHandler()}>開始倒數</button>
       </div>
 
-      <CountDownTimer seconds={countDownTime * 60} />
+      <CountDownTimer />
     </div>
   );
 }

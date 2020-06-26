@@ -1,18 +1,20 @@
 import React from "react";
 import "./UserList.style.scss";
 import { useEffect } from "react";
-import Axios from "axios";
-import { useState } from "react";
 
 import UserListItem from "../UserListItem/UserListItem.component";
+import { useSelector, useDispatch } from "react-redux";
+import { setUserList } from "../../redux/user/user.action";
+import Axios from "axios";
 
 function UserList() {
-  const [userList, setUserList] = useState([]);
+  const userList = useSelector((state) => state.user.userList);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     Axios.get("https://jsonplaceholder.typicode.com/users")
       .then((response) => {
-        setUserList(response.data);
+        dispatch(setUserList(response.data));
       })
       .catch((error) => {
         console.log(error);

@@ -1,41 +1,51 @@
 import React from "react";
 import "./CountDownTimer.style.scss";
-import { useState } from "react";
 import { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { setCountDownSecond } from "../../redux/timer/timer.action";
 
-function CountDownTimer({ seconds }) {
-  const [DisplayRemainSecond, setDisplayRemainSecond] = useState(seconds);
+import { setWinner } from "../../redux/user/user.action";
+
+function CountDownTimer() {
+  const countDownSecond = useSelector((state) => state.timer.countDownSecond);
+  const dispatch = useDispatch();
+
+  const calculateTimeLeft = (timerStartTime) => {
+    const currentTime = Date.now(); //當下時間
+    const difference = parseInt((currentTime - timerStartTime) / 1000);
+    const remain = countDownSecond - difference;
+    return remain;
+  };
 
   useEffect(() => {
-    const countDownSecond = seconds;
+    if (countDownSecond === 0) return; //輸入秒數才開始倒數
 
-    const timerStartTime = Date.now(); //Timer啟動時的時間
+    const timerStartTime = Date.now(); //Timer啟動時的時間(計算剩餘時間需要)
 
     // Timer啟動
     const countDownTimer = setInterval(() => {
-      const currentTime = Date.now(); //當下時間
-      const passedSecond = parseInt((currentTime - timerStartTime) / 1000); //Timer啟動了多久
-
-      const remain = countDownSecond - passedSecond; //剩下多少時間
-
-      setDisplayRemainSecond(remain < 0 ? 0 : remain);
+      const remain = calculateTimeLeft(timerStartTime); //計算剩餘時間
+      dispatch(setCountDownSecond(remain)); //將剩餘時間更新至state
 
       // 如果歸零則停止
-      if (remain <= 0) clearInterval(countDownTimer);
+      if (remain <= 0) {
+        clearInterval(countDownTimer);
+        console.log("SUCCESS");
+
+        dispatch(setWinner());
+      }
     }, 1000);
 
     return () => {
       // 清除 Timer 準備重置
       clearInterval(countDownTimer);
     };
-  }, [seconds]);
+  }, [countDownSecond]);
 
   return (
     <div className="CountDownTimer">
-      <h1>
-        {new Date(DisplayRemainSecond * 1000).toISOString().substr(14, 5)}
-      </h1>
+      <h1>{new Date(countDownSecond * 1000).toISOString().substr(14, 5)}</h1>
     </div>
   );
 }
-export default CountDownTimer;
+export default React.memo(CountDownTimer);
