@@ -7,8 +7,11 @@ const initialState = {
 
 const userReducer = (state = initialState, action) => {
   switch (action.type) {
-    case userTypes.SET_USER_LIST:
+    case userTypes.SET_USER_LIST: {
+      console.log(action);
+
       return { ...state, userList: action.payload };
+    }
 
     case userTypes.SET_WINNER: {
       const winnerId = Math.floor(Math.random() * state.userList.length);

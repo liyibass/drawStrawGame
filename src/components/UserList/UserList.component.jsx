@@ -4,21 +4,14 @@ import { useEffect } from "react";
 
 import UserListItem from "../UserListItem/UserListItem.component";
 import { useSelector, useDispatch } from "react-redux";
-import { setUserList } from "../../redux/user/user.action";
-import Axios from "axios";
+import { fetchUserListFromApi } from "../../redux/user/user.action";
 
 function UserList() {
   const userList = useSelector((state) => state.user.userList);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    Axios.get("https://jsonplaceholder.typicode.com/users")
-      .then((response) => {
-        dispatch(setUserList(response.data));
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    dispatch(fetchUserListFromApi());
   }, []);
 
   return (
@@ -28,9 +21,11 @@ function UserList() {
     >
       <h1>參與抽獎名單</h1>
       <div className="UserList-List">
-        {userList.map((user) => {
-          return <UserListItem name={user.name} key={user.id} />;
-        })}
+        {userList.length
+          ? userList.map((user) => {
+              return <UserListItem name={user.name} key={user.id} />;
+            })
+          : null}
       </div>
     </div>
   );

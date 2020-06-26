@@ -1,4 +1,17 @@
 import userTypes from "./user.types";
+import Axios from "axios";
+
+export const fetchUserListFromApi = () => {
+  return function (dispatch) {
+    Axios.get("https://jsonplaceholder.typicode.com/users")
+      .then((response) => {
+        dispatch(setUserList(response.data));
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+};
 
 export const setUserList = (userList) => {
   return {
@@ -7,7 +20,7 @@ export const setUserList = (userList) => {
   };
 };
 
-export const setWinner = (userList) => {
+export const setWinner = () => {
   return {
     type: userTypes.SET_WINNER,
   };
