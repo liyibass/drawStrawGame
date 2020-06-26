@@ -25,7 +25,7 @@ function UserList() {
   function addUserHandler() {
     console.log("addUser");
     let newUserName = prompt("輸入姓名", "王大錘");
-    let newUser = { id: userList.length + 100, name: newUserName };
+    let newUser = { id: newUserName + userList.length, name: newUserName };
 
     dispatch(addUser(newUser));
   }

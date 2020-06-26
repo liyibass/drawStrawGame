@@ -3,18 +3,24 @@
 
 .Timer {
   // background-color: red;
-  width: 350px;
+  width: 80%;
+  margin-top: 300px;
+  margin-left: auto;
+  margin-right: auto;
 
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
 
-  margin: 0 30px;
-
   .CountDownTimer {
     font-size: 50px;
   }
-  @include atSmall {
+  @include atMedium {
+    width: 350px;
+    margin: 0 30px;
+    .CountDownTimer {
+      font-size: 50px;
+    }
   }
 }
